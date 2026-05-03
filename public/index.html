@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CivicPath AI - A nonpartisan, educational guide to understanding the US election process.">
+    <title>CivicPath India AI | Election Process Education</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+
+    <header class="app-header">
+        <div class="logo">
+            <h1>🏛️ CivicPath India AI <span class="badge badge-safety">Nonpartisan Education Only</span></h1>
+            <p class="subtitle">No candidate or party recommendations</p>
+        </div>
+        <nav aria-label="Main navigation">
+            <ul class="nav-links">
+                <li><button class="nav-btn active" data-target="journey-view" aria-current="page">Journey</button></li>
+                <li><button class="nav-btn" data-target="timeline-view">Timeline</button></li>
+                <li><button class="nav-btn" data-target="chat-view">Ask AI</button></li>
+                <li><button class="nav-btn" data-target="quiz-view">Quiz</button></li>
+                <li><button class="nav-btn" data-target="dashboard-view">Educator Dashboard</button></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content" class="container">
+        
+        <!-- Safety Disclaimer Banner -->
+        <div class="disclaimer-banner" role="alert">
+            <strong>Important:</strong> Election rules, dates, voter lists, polling stations, and ID requirements can change. Always verify through the Election Commission of India, Voters’ Services Portal, or your official State Chief Electoral Officer website.
+        </div>
+
+        <!-- 1. Election Journey View -->
+        <section id="journey-view" class="view active" aria-labelledby="journey-title">
+            <h2 id="journey-title">The Indian Election Journey</h2>
+            <p class="view-desc">Understand the step-by-step process of how elections work in India.</p>
+            
+            <div class="journey-steps">
+                <div class="step-card">
+                    <div class="step-icon">📝</div>
+                    <h3>1. Voter Registration</h3>
+                    <p>Ensure your name is on the Electoral Roll. First-time voters use Form 6 to register and get their EPIC (Voter ID).</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">📅</div>
+                    <h3>2. Election Schedule & MCC</h3>
+                    <p>The ECI announces the schedule. The Model Code of Conduct (MCC) immediately comes into effect to ensure fair campaigning.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">📄</div>
+                    <h3>3. Before Voting</h3>
+                    <p>Check your polling station online. Political parties may issue a Voter Information Slip, but an official ID is required to vote.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">🚶</div>
+                    <h3>4. Polling Booth Steps</h3>
+                    <p>At the booth, officials verify your identity, apply indelible ink to your finger, and authorize you to cast your vote.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">🔘</div>
+                    <h3>5. Casting Vote (EVM & VVPAT)</h3>
+                    <p>Press the button next to your choice on the Electronic Voting Machine (EVM) or choose NOTA. A VVPAT slip confirms your choice.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">🔢</div>
+                    <h3>6. Counting</h3>
+                    <p>EVMs are securely transported and counted in the presence of candidates under strict ECI supervision.</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-icon">✅</div>
+                    <h3>7. Results Declaration</h3>
+                    <p>The Returning Officer officially declares the result, and the Election Commission formalizes the new assembly.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Timeline Builder -->
+        <section id="timeline-view" class="view hidden" aria-labelledby="timeline-title">
+            <h2 id="timeline-title">Timeline Builder</h2>
+            <p class="view-desc">Select an election type to see a generalized timeline of key milestones.</p>
+            
+            <div class="controls-panel">
+                <label for="election-type">Election Type:</label>
+                <select id="election-type" class="form-select">
+                    <option value="loksabha">Lok Sabha (General Election)</option>
+                    <option value="assembly">State Legislative Assembly</option>
+                    <option value="localbody">Local Body (Panchayat/Municipality)</option>
+                    <option value="byelection">By-election</option>
+                </select>
+                <button id="build-timeline-btn" class="primary-btn">Generate Timeline</button>
+            </div>
+
+            <div class="timeline-container">
+                <ul id="timeline-list" class="timeline">
+                    <!-- Populated via JS -->
+                    <li class="placeholder-text">Select an election type to view milestones.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 3. Ask CivicPath AI -->
+        <section id="chat-view" class="view hidden" aria-labelledby="chat-title">
+            <h2 id="chat-title">Ask CivicPath AI</h2>
+            <p class="view-desc">Have a question about how elections work? Ask our nonpartisan assistant.</p>
+            
+            <div class="chat-container">
+                <div id="chat-history" class="chat-history" aria-live="polite">
+                    <div class="chat-bubble ai">
+                        Hi! I'm CivicPath India AI. I can explain Indian election processes like voter registration (Form 6), EVMs, and the Model Code of Conduct. What would you like to learn about?
+                    </div>
+                </div>
+                
+                <form id="chat-form" class="chat-input-area">
+                    <input type="text" id="chat-input" placeholder="e.g., What is a VVPAT machine?" required autocomplete="off">
+                    <button type="submit" class="primary-btn" id="chat-submit" aria-label="Send message">Send</button>
+                </form>
+                <div id="chat-loading" class="loading-indicator hidden">AI is thinking...</div>
+            </div>
+        </section>
+
+        <!-- 4. Quiz -->
+        <section id="quiz-view" class="view hidden" aria-labelledby="quiz-title">
+            <h2 id="quiz-title">Test Your Knowledge</h2>
+            <p class="view-desc">Take this quick, 8-question quiz to test your understanding of the Indian election process.</p>
+            
+            <div id="quiz-container" class="quiz-container">
+                <button id="start-quiz-btn" class="primary-btn large-btn">Start Quiz</button>
+                <div id="quiz-content" class="hidden">
+                    <h3 id="question-text"></h3>
+                    <div id="options-container" class="options-grid"></div>
+                    <div id="feedback-container" class="feedback-box hidden" aria-live="polite"></div>
+                    <button id="next-btn" class="secondary-btn hidden mt-4">Next Question</button>
+                </div>
+                <div id="quiz-results" class="hidden results-box">
+                    <h3>Quiz Complete!</h3>
+                    <p id="score-text"></p>
+                    <button id="restart-quiz-btn" class="primary-btn mt-4">Retake Quiz</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Educator Dashboard -->
+        <section id="dashboard-view" class="view hidden" aria-labelledby="dashboard-title">
+            <h2 id="dashboard-title">Educator Dashboard</h2>
+            <p class="view-desc">A high-level overview of common election topics and safety policies for classroom use.</p>
+            
+            <div class="dashboard-grid">
+                <div class="dash-card">
+                    <h3>Commonly Asked Topics</h3>
+                    <ul class="dash-list">
+                        <li>EVM Security & VVPAT Slips</li>
+                        <li>Form 6 Registration Process</li>
+                        <li>Model Code of Conduct Rules</li>
+                        <li>Role of the Election Commission (ECI)</li>
+                        <li>Understanding the NOTA Option</li>
+                    </ul>
+                </div>
+                <div class="dash-card">
+                    <h3>Safety & Nonpartisan Policy</h3>
+                    <p>CivicPath India AI is programmed with strict constraints to ensure a safe learning environment:</p>
+                    <ul class="dash-list">
+                        <li><strong>No Endorsements:</strong> The AI will not recommend candidates or parties.</li>
+                        <li><strong>No Persuasion:</strong> The tool is strictly educational, not argumentative.</li>
+                        <li><strong>Verification:</strong> Always points users to the ECI or Voters' Services Portal for live deadlines.</li>
+                    </ul>
+                </div>
+                <div class="dash-card full-width">
+                    <h3>Teaching Resource: Process Steps Overview</h3>
+                    <p>Use the <strong>Journey</strong> tab to guide students through the core steps of an Indian election, from electoral roll registration to the declaration of results. Emphasize the role of the Election Commission of India (ECI) in maintaining free and fair democratic processes.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="app-footer">
+        <p>Built for the Election Process Education Challenge. Nonpartisan & Educational.</p>
+    </footer>
+
+    <script src="app.js" type="module"></script>
+</body>
+</html>
